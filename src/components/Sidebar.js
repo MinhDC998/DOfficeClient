@@ -101,6 +101,7 @@ export default (props = {}) => {
 
               {/* <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} /> */}
               <NavItem title="User" link={Routes.User.path} icon={faUser} />
+              <NavItem title="Example" link={Routes.exampleComponent.path} icon={faUser} />
 {/* 
               <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
                 <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />

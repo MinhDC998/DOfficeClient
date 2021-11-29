@@ -39,5 +39,9 @@ export const Routes = {
 
     // dashboard
     User: { path: '/dashboard/user' },
-    AddUser: { path: '/dashboard/user/add' }
+    AddUser: { path: '/dashboard/user/add' },
+
+    // example
+
+    exampleComponent: { path: '/dashboard/example' }
 };
