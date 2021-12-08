@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {Route, Switch, Redirect, useHistory} from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import { Routes } from "../routes";
+
 
 // pages
 import Presentation from "./Presentation";
@@ -42,12 +43,20 @@ import Toasts from "./components/Toasts";
 import User from './components/users/User';
 import AddUser from './components/users/AddUser';
 import authenticateServices from "../services/authenticate.services";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authenticationActions from "../actions/authentication.actions";
 import ComingDispatchManagement from "./components/ComingDispatch/ComingDispatchManagement";
 import OutGoingDispatchManagement from "./components/OutgoingDispatch/OutGoingDispatchManagement";
 import AddComingDispatch from "./components/OutgoingDispatch/AddComingDispatch";
 import ComingDispatchDetail from "./components/ComingDispatch/ComingDispatchDetail";
+import Work from "./components/Work/Work";
+import AddWork from './components/Work/AddWork';
+import WorkDetail from './components/Work/WorkDetail';
+
+
+import Task from "./components/Task/Task"
+import Meeting from './components/Meeting/Meeting';
+
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
@@ -58,7 +67,7 @@ const RouteWithLoader = ({ component: Component, ...rest }) => {
   }, []);
 
   return (
-    <Route {...rest} render={props => ( <> <Preloader show={loaded ? false : true} /> <Component {...props} /> </> ) } />
+    <Route {...rest} render={props => (<> <Preloader show={loaded ? false : true} /> <Component {...props} /> </>)} />
   );
 };
 
@@ -86,13 +95,13 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
   }
 
   if (!userLoaded) {
-      return (
-          <div>Loading...</div>
-      );
+    return (
+      <div>Loading...</div>
+    );
   }
 
   if (!user) {
-      return <Redirect to={Routes.Signin.path} />;
+    return <Redirect to={Routes.Signin.path} />;
   }
 
   return (
@@ -151,15 +160,27 @@ export default () => (
 
     <RouteWithSidebar exact path={Routes.AddUser.path} component={AddUser} />
 
-      {/*  Coming dispatch  */}
+    {/*  Coming dispatch  */}
     <RouteWithSidebar exact path={Routes.ComingDispatchManagement.path} component={ComingDispatchManagement} />
     <RouteWithSidebar exact path={Routes.AddComingDispatch.path} component={AddComingDispatch} />
     <RouteWithSidebar exact path={Routes.ComingDispatchDetail.path} component={ComingDispatchDetail} />
 
-      {/*Out going dispatch*/}
+    {/*Out going dispatch*/}
     <RouteWithSidebar exact path={Routes.OutGoingDispatchManagement.path} component={OutGoingDispatchManagement} />
 
     <RouteWithSidebar exact path={Routes.Presentation.path} component={DashboardOverview} />
+    {/* Work */}
+    <RouteWithSidebar exact path={Routes.WorkManagement.path} component={Work} />
+    <RouteWithSidebar exact path={Routes.AddWork.path} component={AddWork} />
+    <RouteWithSidebar exact path={Routes.WorkDetail.path} component={WorkDetail} />
+
+
+    {/* Task */}
+    <RouteWithSidebar exact path={Routes.TaskManagement.path} component={Task} />
+
+    {/* Meeting*/}
+    <RouteWithSidebar exact path={Routes.MeetingManagement.path} component={Meeting} />
+
 
     <Redirect to={Routes.NotFound.path} />
   </Switch>

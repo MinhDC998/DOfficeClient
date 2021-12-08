@@ -110,6 +110,7 @@ export default (props = {}) => {
               <NavItem title="User" link={Routes.User.path} icon={faUser} />
               <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />
               <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} />
+              <NavItem title="Quản lý công việc" link={Routes.WorkManagement.path} icon={faUser} />
 
               {/*<CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>*/}
               {/*  <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />*/}
@@ -121,7 +122,7 @@ export default (props = {}) => {
 
 
 
-{/* 
+              {/* 
               <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
                 <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />
               </CollapsableNavItem>

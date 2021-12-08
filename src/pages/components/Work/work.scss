@@ -1,0 +1,31 @@
+textarea {
+  resize: none;
+  height: 100px;
+  width: 100%;
+}
+
+.assigns {
+  position: relative;
+  width: auto;
+  max-width: 300px;
+  text-overflow: ellipsis;
+  transition: all linear 0.5;
+  div {
+    overflow: hidden;
+    width: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: all linear 0.5;
+    padding: 6px 12px;
+  }
+
+  &:hover div {
+    overflow: visible;
+    white-space: normal;
+    max-width: 180%;
+    width: 180%;
+    z-index: 1;
+    background-color: #c1ffe2;
+    border-radius: 15px;
+  }
+}

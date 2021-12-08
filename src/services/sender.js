@@ -54,3 +54,24 @@ export const post = (endpoint, data) => {
         }
     }).then(handleResponse).catch(handleError);
 };
+
+export const put = (endpoint, data) => {
+    return axios.put(`${ROUTE_PATH}${endpoint}`, data, {
+        headers: {
+            'Authorization': `Bearer ${getAuthToken()}`
+        }
+    }).then(handleResponse).catch(handleError);
+};
+export const del = (endpoint, params) => {
+    return axios
+        .delete(
+            `${ROUTE_PATH}${endpoint}`,
+            {
+                params,
+                headers: {
+                    'Authorization': `Bearer ${getAuthToken()}`
+                }
+            })
+        .then(handleResponse)
+        .catch(handleError);
+};

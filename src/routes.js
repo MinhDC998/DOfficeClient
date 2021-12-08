@@ -47,5 +47,17 @@ export const Routes = {
     ComingDispatchDetail: {path: '/coming-dispatch/:id'},
 
     // Out going dispatch management
-    OutGoingDispatchManagement: { path: '/out-going-dispatch'}
+    OutGoingDispatchManagement: { path: '/out-going-dispatch'},
+
+    //Work
+    WorkManagement: { path: '/work' },
+    AddWork : {path :'/work/addWork'},
+    WorkDetail: { path: '/work/detail/:id' },
+
+    //Task
+    TaskManagement : {path :"/task"},
+
+    //Meeting
+    MeetingManagement : {path:"/meeting"},
+
 };
