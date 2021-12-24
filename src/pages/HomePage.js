@@ -52,10 +52,19 @@ import ComingDispatchDetail from "./components/ComingDispatch/ComingDispatchDeta
 import Work from "./components/Work/Work";
 import AddWork from './components/Work/AddWork';
 import WorkDetail from './components/Work/WorkDetail';
+import Calendar from './components/Calendar/Calendar'
+import MeetingCalendar from './components/Meeting/MeetingCalendar';
+
 
 
 import Task from "./components/Task/Task"
+import TaskDetail from './components/Task/TaskDetail'
+import MyTask from './components/Task/MyTask'
 import Meeting from './components/Meeting/Meeting';
+import MeetingDetail from './components/Meeting/MeetingDetail'
+import Intivation from './components/Meeting/Invitation'
+import MyWork from './components/Work/MyWork';
+import StoredWork from './components/Work/StoredWork';
 
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
@@ -173,13 +182,31 @@ export default () => (
     <RouteWithSidebar exact path={Routes.WorkManagement.path} component={Work} />
     <RouteWithSidebar exact path={Routes.AddWork.path} component={AddWork} />
     <RouteWithSidebar exact path={Routes.WorkDetail.path} component={WorkDetail} />
+    <RouteWithSidebar exact path={Routes.MyWork.path} component={MyWork} />
+    <RouteWithSidebar exact path={Routes.StoredWorks.path} component={StoredWork} />
+
+
 
 
     {/* Task */}
     <RouteWithSidebar exact path={Routes.TaskManagement.path} component={Task} />
+    <RouteWithSidebar exact path={Routes.TaskDetail.path} component={TaskDetail} />
+    <RouteWithSidebar exact path={Routes.MyTask.path} component={MyTask} />
+
+
 
     {/* Meeting*/}
-    <RouteWithSidebar exact path={Routes.MeetingManagement.path} component={Meeting} />
+    <RouteWithSidebar exact path={Routes.Calendar.path} component={Calendar} />
+    <RouteWithSidebar exact path={Routes.MeetingCalendar.path} component={MeetingCalendar} />
+    <RouteWithSidebar exact path={Routes.MeetingManager.path} component={Meeting} />
+    <RouteWithSidebar exact path={Routes.MeetingDetail.path} component={MeetingDetail} />
+    <RouteWithSidebar exact path={Routes.MeetingIntivation.path} component={Intivation} />
+
+
+
+
+
+
 
 
     <Redirect to={Routes.NotFound.path} />

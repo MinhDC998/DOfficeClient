@@ -1,6 +1,7 @@
 const defaultState = {
     user: undefined,
     userLoaded: false,
+    role: undefined,
 };
 
 const authenticationReducer = (state = defaultState, action) => {
@@ -20,6 +21,22 @@ const authenticationReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 user: action.payload,
+            };
+        case 'ROLE_LOADED':
+            return {
+                ...state,
+                role: action.payload,
+                userLoaded: true,
+            };
+        case 'ROLE_FAILED':
+            return {
+                ...state,
+                userLoaded: true,
+            };
+        case 'ROLE_LOADING':
+            return {
+                ...state,
+                userLoaded: false,
             };
         default:
             return state;

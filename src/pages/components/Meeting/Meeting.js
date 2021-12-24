@@ -3,25 +3,22 @@ import { Card, Button, Table, ListGroup, ListGroupItem } from '@themesberg/react
 
 import { Link } from 'react-router-dom';
 import { Routes } from '../../../routes';
-import Preloader from "../../../components/Preloader";
-
-import * as userApi from '../../../services/user';
 import TableRow from "./TableRow";
-import meetingService from '../../../services/meeting.services';
+import meetingActions from '../../../actions/meetingActions';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export default () => {
-  const [meetings, setMeetings] = React.useState();
+
+  const dispatch = useDispatch()
+  const { meetings, loading } = useSelector(state => state.meeting)
+
 
   useEffect(() => {
 
-    getListMeeting()
+    dispatch(meetingActions.getAll())
   }, [])
 
-  const getListMeeting = async () => {
-    const data = await meetingService.getAll();
-
-    setMeetings(data);
-  }
 
   console.log(meetings);
 
@@ -29,36 +26,35 @@ export default () => {
 
   return (
     <>
-     
+
+
       <div className="d-xl-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4" style={{ marginBottom: '25px' }}>
 
         <div className="d-block mb-4 mb-xl-0">
-          <h4>CALENDAR</h4>
+          <h4>CUỘC HỌP</h4>
           {/* <p className="mb-0">
                     Dozens of reusable components built to provide buttons, alerts, popovers, and more.
                 </p> */}
-
           <Button variant="secondary" className="m-1 mb-4">
-            <Link to={Routes.AddWork.path}> Creat new work</Link>
+            <Link to={Routes.MeetingCalendar.path}> Tạo cuộc họp mới</Link>
           </Button>
         </div>
       </div>
 
-      {meetings ? (
+      {!loading ? (
         <Card border="light" className="shadow-sm">
           <Card.Body className="p-0">
-            <Table responsive className="table-centered rounded" style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
-              <thead className="thead-light ">
+            <Table  className="table-centered rounded table-hover" style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+              <thead className="thead-dark ">
                 <tr>
-                  <th className="border-0" style={{ width: '15%' }}>Name</th>
-                  <th className="border-0" style={{ width: '15%' }}>Venue</th>
-                  <th className="border-0" style={{ width: '10%' }}>Start</th>
-                  <th className="border-0" >End</th>
-                
+                  <th className="border-0" style={{ width: '15%' }}>Tiêu đề</th>
+                  <th className="border-0" style={{ width: '15%' }}>Phòng họp</th>
+                  <th className="border-0" style={{ width: '10%' }}>Bắt đầu:</th>
+                  <th className="border-0" >Kết thúc</th>
                 </tr>
               </thead>
               <tbody>
-                {meetings.data.map?.(c => <TableRow key={`command-${c.id}`} {...c} />)}
+                {meetings.map?.(c => <TableRow key={`command-${c.id}`} {...c} />)}
               </tbody>
             </Table>
           </Card.Body>

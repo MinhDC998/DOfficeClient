@@ -7,9 +7,12 @@ import Preloader from "../../../components/Preloader";
 
 import * as userApi from '../../../services/user';
 import TableRow from "./TableRow";
+import { useSelector } from 'react-redux';
 
 export default () => {
     const [users, setUsers] = React.useState();
+    const { user } = useSelector(state => state.authentication)
+    console.log(user)
 
     useEffect(() => {
       getListUser();

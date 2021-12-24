@@ -42,22 +42,32 @@ export const Routes = {
     AddUser: { path: '/dashboard/user/add' },
 
     // Coming dispatch management
-    ComingDispatchManagement: { path: '/coming-dispatch'},
-    AddComingDispatch: { path: '/coming-dispatch/add'},
-    ComingDispatchDetail: {path: '/coming-dispatch/:id'},
+    ComingDispatchManagement: { path: '/coming-dispatch' },
+    AddComingDispatch: { path: '/coming-dispatch/add' },
+    ComingDispatchDetail: { path: '/coming-dispatch/:id' },
 
     // Out going dispatch management
-    OutGoingDispatchManagement: { path: '/out-going-dispatch'},
+    OutGoingDispatchManagement: { path: '/out-going-dispatch' },
 
     //Work
     WorkManagement: { path: '/work' },
-    AddWork : {path :'/work/addWork'},
+    StoredWorks: { path: '/work/stored' },
+    AddWork: { path: '/work/addWork' },
     WorkDetail: { path: '/work/detail/:id' },
+    MyWork: { path: '/work/user/:userId' },
+
 
     //Task
-    TaskManagement : {path :"/task"},
+    TaskManagement: { path: "/task" },
+    TaskDetail: { path: '/task/detail/:id' },
+    MyTask: { path: '/task/user/:userId' },
 
     //Meeting
-    MeetingManagement : {path:"/meeting"},
+    MeetingCalendar: { path: "/MeetingCalendar" },
+    MeetingManager: { path: "/Meeting" },
+    MeetingDetail: { path: '/meeting/detail/:id' },
+    MeetingIntivation: { path: '/meeting/intivation' },
+    Calendar: { path: "/Calendar" },
+
 
 };

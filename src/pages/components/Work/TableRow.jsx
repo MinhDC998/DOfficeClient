@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Table, ListGroup, ListGroupItem, Modal } from '@themesberg/react-bootstrap';
-import ModalInfo from "./ModalInfo";
-import taskServices from "../../../services/task.services";
+import ModalInfo from "./modal/ModalInfo";
+
 import workServices from '../../../services/work.services';
 import Optional from './Optional';
 import moment from "moment";
@@ -14,7 +14,6 @@ const TableRow = props => {
 
     const [showModal, setshowModal] = useState(false)
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
 
     const [assigns, setAssigns] = React.useState()
 
@@ -37,9 +36,11 @@ const TableRow = props => {
         })
         if (str) {
             str = str.slice(0, str.length - 2);
+            setAssignsList(str)
         }
+        else
+            setAssignsList('Chưa có nhân viên, nhấn để thêm')
 
-        setAssignsList(str)
         console.log(list.data)
     }
 
@@ -54,8 +55,7 @@ const TableRow = props => {
 
     return (
         <>
-
-            <tr  >
+            {assigns ? (<tr style={{ cursor: 'pointer' }} >
                 <td className="fw-bold border-0" onClick={handleShow}>
                     <code>{props.title}</code>
                 </td>
@@ -81,12 +81,13 @@ const TableRow = props => {
                 </td>
                 <td className="border-0" >
 
-                    <Optional data={props} deleteWork={props.deleteWork} />
+                    <Optional data={props} />
                 </td>
-            </tr>
+            </tr>) : null}
+
             {
                 showModal ? (
-                    <ModalInfo showModal={showModal} setshowModal={setshowModal} data={props} />
+                    <ModalInfo showModal={showModal} setshowModal={setshowModal} data={props} assigns={assignsList} />
                 ) : null
             }
 

@@ -51,7 +51,7 @@ export default () => {
             <InputGroup.Text>
 
             </InputGroup.Text>
-            <Form.Control autoFocus required type="text" placeholder="Work title" name='title' onChange={onChange} required />
+            <Form.Control autoFocus  type="text" placeholder="Work title" name='title' onChange={onChange} required />
           </InputGroup>
         </Form.Group>
 
@@ -62,7 +62,7 @@ export default () => {
               <InputGroup.Text>
 
               </InputGroup.Text>
-              <Form.Control required type="text" placeholder="Work content" name='description' onChange={onChange} required />
+              <Form.Control  type="text" placeholder="Work content" name='description' onChange={onChange} required />
             </InputGroup>
           </Form.Group>
         </Form.Group>
@@ -71,7 +71,7 @@ export default () => {
           <Form.Group id="beginDate" className="mb-4">
             <Form.Label>Choose Begin Date</Form.Label>
             <InputGroup>
-              <Form.Control required type="date" name = "beginDate" onChange={onChange} required />
+              <Form.Control required type="date" name = "beginDate" onChange={onChange}  />
             </InputGroup>
           </Form.Group>
         </Form.Group>

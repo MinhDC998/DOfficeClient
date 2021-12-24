@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBoxOpen, faChartPie, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faSave, faList, faFileAlt, faCalendar, faSignOutAlt, faTable, faTimes, faBriefcase, faBox, faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cookie from 'js-cookie';
@@ -13,9 +13,13 @@ import { Routes } from "../routes";
 import ThemesbergLogo from "../assets/img/themesberg.svg";
 import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
-import authenticationActions from "../actions/authentication.actions";
+
+import { useSelector } from "react-redux";
 
 export default (props = {}) => {
+  
+  const { user,role } = useSelector(state => state.authentication);
+
   const location = useLocation();
   const { pathname } = location;
   const [show, setShow] = useState(false);
@@ -108,13 +112,37 @@ export default (props = {}) => {
 
               {/* <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} /> */}
               <NavItem title="User" link={Routes.User.path} icon={faUser} />
-              <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />
-              <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} />
-              <NavItem title="Quản lý công việc" link={Routes.WorkManagement.path} icon={faUser} />
+              <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faFileAlt} />
+              <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faFileAlt} />
+              {/* <NavItem title="Quản lý công việc" link={Routes.WorkManagement.path} icon={faTable} /> */}
+              <CollapsableNavItem eventKey="tables/" title="Quản lý công việc" icon={faTable}>
 
-              {/*<CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>*/}
-              {/*  <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />*/}
-              {/*</CollapsableNavItem>*/}
+                <NavItem title="Tất cả công việc" link={Routes.WorkManagement.path} icon={faTable} />
+                <NavItem title="Công việc của tôi" link={'/work/user/' + user.id} icon={faBriefcase} />
+                <NavItem title="Công việc lưu trữ" link={Routes.StoredWorks.path} icon={faBoxOpen} />
+
+                <Dropdown.Divider className="my-1 border-white" />
+                <NavItem title="Tác vụ" link={Routes.TaskManagement.path} icon={faList} />
+                <NavItem title="Tác vụ của tôi" link={'/task/user/' + user.id} icon={faBriefcase} />
+
+              </CollapsableNavItem>
+
+              {/* <NavItem title="Lịch" link={Routes.Calendar.path} icon={faCalendar} /> */}
+              <CollapsableNavItem eventKey="Lịch/" title="Lịch" icon={faCalendar}>
+                <NavItem title="Lịch làm việc" link={Routes.Calendar.path} icon={faCalendar} />
+                <NavItem title="Lịch họp" link={Routes.MeetingCalendar.path} icon={faCalendar} />
+
+                <Dropdown.Divider className="my-1 border-white" />
+                <NavItem title="Danh sách họp" link={Routes.MeetingManager.path} icon={faList} />
+
+                <NavItem title="Lời mời" icon={faList} link={Routes.MeetingIntivation.path} />
+              </CollapsableNavItem>
+
+
+
+
+
+
 
               {/*<CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>*/}
               {/*  <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} />*/}

@@ -2,11 +2,13 @@ textarea {
   resize: none;
   height: 100px;
   width: 100%;
+  border-radius: 5px;
+  padding-left: 10px;
 }
 
 .assigns {
   position: relative;
-  width: auto;
+  // width: 250px;
   max-width: 300px;
   text-overflow: ellipsis;
   transition: all linear 0.5;
@@ -16,16 +18,45 @@ textarea {
     white-space: nowrap;
     text-overflow: ellipsis;
     transition: all linear 0.5;
-    padding: 6px 12px;
+    padding: 6px;
   }
 
   &:hover div {
     overflow: visible;
     white-space: normal;
-    max-width: 180%;
-    width: 180%;
+    max-width: 150%;
+    width: 150%;
     z-index: 1;
-    background-color: #c1ffe2;
-    border-radius: 15px;
+    background-color: rgb(180, 180, 180);
+    border-radius: 5px;
   }
 }
+.card-work {
+  // width: 300px;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-shadow: 2px 2px rgb(180, 180, 180);
+}
+.card-work:hover {
+  background-color: rgb(231, 230, 230);
+  cursor: pointer;
+
+}
+.sub-list-task{
+  padding: .2rem 1rem .2rem 0.6rem;
+  margin: 0.3rem 0;
+  margin-left: 30px;
+  cursor: pointer;
+  background-color: #0096fb;
+  color: #fff;
+  border-radius: 4px;
+  // text-transform: capitalize;
+
+}
+.sub-list-task:hover {
+  opacity: .8;
+}
+
+

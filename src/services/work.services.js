@@ -3,6 +3,9 @@ import {get, post,del,put} from './sender';
 function getAll() {
     return get('/api/work');
 }
+function getAllStoredWorks() {
+    return get('/api/work/stored');
+}
 
 function getWorkById(workId) {
     return get(`/api/work/${workId}`);
@@ -11,6 +14,11 @@ function getWorkById(workId) {
 function getAssignByWorkId(workId) {
     return get(`/api/work/assign/${workId}`);
 }
+
+function getWorkByUserId(userId) {
+    return get(`/api/work/user/${userId}`);
+}
+
 
 function createWorkByForm(data) {
     return post(`/api/work`,data);
@@ -32,14 +40,17 @@ function updateWork(data,workId){
     return put(`/api/work/${workId}`,data);
 }
 
-function completeWork(workId){
-    return put(`/api/work/complete/${workId}`);
+function updateWorkDetail(data,workId){
+    return put(`/api/work/update/${workId}`,data);
 }
+
+
 
 
 
 const workServices = {
     getAll,
+    getAllStoredWorks,
     getWorkById,
     createWorkByForm,
     deleteWork,
@@ -47,7 +58,8 @@ const workServices = {
     getAssignByWorkId,
     insertWorkAssign,
     removeWorkAssign,
-    completeWork,
+    getWorkByUserId,
+    updateWorkDetail,
 
 
 }

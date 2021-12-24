@@ -1,0 +1,13 @@
+.list-staff span {
+  padding: 0.2rem 1rem 0.2rem 0.6rem;
+  margin: 0.3rem 0;
+  margin-left: 30px;
+  cursor: pointer;
+  background-color: #0096fb;
+  color: #fff;
+  border-radius: 4px;
+  // text-transform: capitalize;
+}
+.list-staff span:hover {
+  opacity: 0.8;
+}

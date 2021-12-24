@@ -15,6 +15,9 @@ function getUserNameById(userId){
 function getStaffById(userId){
     return get(`/api/admin/staff/${userId}`);
 }
+function getRoleOfUser(userId){
+    return get(`/api/admin/role/${userId}`);
+}
 
 
 const userServices = {
@@ -22,6 +25,7 @@ const userServices = {
     getUserNameById,
     getAllStaff,
     getStaffById,
+    getRoleOfUser,
 }
 
 export default userServices;
