@@ -4,7 +4,7 @@ import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBoxOpen, faChartPie, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faBoxOpen, faChartPie, faFileAlt, faHandHoldingUsd, faSignOutAlt, faTable, faTimes, faSearch, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Nav, Badge, Image, Button, Dropdown, Accordion, Navbar } from '@themesberg/react-bootstrap';
 import { Link } from 'react-router-dom';
 import Cookie from 'js-cookie';
@@ -14,6 +14,7 @@ import ThemesbergLogo from "../assets/img/themesberg.svg";
 import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
 import authenticationActions from "../actions/authentication.actions";
+import { useSelector } from "react-redux";
 
 export default (props = {}) => {
   const location = useLocation();
@@ -27,6 +28,9 @@ export default (props = {}) => {
     Cookie.remove('authToken');
     window.location.href = '/';
   }
+
+  const {user} = useSelector(state => state.authentication)
+  // console.log(user);
 
   const CollapsableNavItem = (props) => {
     const { eventKey, title, icon, children = null } = props;
@@ -107,36 +111,35 @@ export default (props = {}) => {
               <NavItem title="D Office" link={Routes.Presentation.path} image={ReactHero} />
 
               {/* <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} /> */}
-              <NavItem title="User" link={Routes.User.path} icon={faUser} />
-              <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />
-              <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} />
+              {/* <NavItem title="User" link={Routes.User.path} icon={faUser} /> */}
+              {/* <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />
+              <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} /> */}
+              {/* <NavItem title="Tài liệu" link={Routes.Document.path} icon={faUser} /> */}
+              
+              {/* <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
+               <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />
+              </CollapsableNavItem>
 
-              {/*<CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>*/}
-              {/*  <NavItem title="Văn bản đến" link={Routes.ComingDispatchManagement.path} icon={faUser} />*/}
-              {/*</CollapsableNavItem>*/}
-
-              {/*<CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>*/}
-              {/*  <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} />*/}
-              {/*</CollapsableNavItem>*/}
-
-
-
-{/* 
               <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
+               <NavItem title="Văn bản đi" link={Routes.OutGoingDispatchManagement.path} icon={faUser} />
+              </CollapsableNavItem> */}
+
+
+
+
+              {/* <CollapsableNavItem eventKey="tables/" title="Tables" icon={faTable}>
                 <NavItem title="Bootstrap Table" link={Routes.BootstrapTables.path} />
+              </CollapsableNavItem> */}
+
+              <CollapsableNavItem eventKey="examples/" title="Quản lí tài liệu" icon={faFileAlt}>
+                <NavItem title="Tài liệu" link={Routes.Document.path} icon={faFileAlt} />
+                <NavItem title="Tìm kiếm" link={Routes.SearchDocument.path} icon={faSearch} />
+                { user.userName === 'administrator' &&
+                  <NavItem title="Phê duyệt" link={Routes.ApproveDocument.path} icon={faCheck} />
+                }
               </CollapsableNavItem>
 
-              <CollapsableNavItem eventKey="examples/" title="Page Examples" icon={faFileAlt}>
-                <NavItem title="Sign In" link={Routes.Signin.path} />
-                <NavItem title="Sign Up" link={Routes.Signup.path} />
-                <NavItem title="Forgot password" link={Routes.ForgotPassword.path} />
-                <NavItem title="Reset password" link={Routes.ResetPassword.path} />
-                <NavItem title="Lock" link={Routes.Lock.path} />
-                <NavItem title="404 Not Found" link={Routes.NotFound.path} />
-                <NavItem title="500 Server Error" link={Routes.ServerError.path} />
-              </CollapsableNavItem>
-
-              <Dropdown.Divider className="my-3 border-indigo" />
+              {/* <Dropdown.Divider className="my-3 border-indigo" />
 
               <CollapsableNavItem eventKey="components/" title="Components" icon={faBoxOpen}>
                 <NavItem title="Accordion" link={Routes.Accordions.path} />

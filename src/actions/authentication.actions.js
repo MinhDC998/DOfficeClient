@@ -29,7 +29,7 @@ function authenticate(username, password) {
             const res = await authenticateServices.authenticate(username, password);
             dispatch({
                 type: 'AUTHENTICATION_LOGGED_IN',
-                payload: username,
+                payload: res.userEntity,
             });
             Cookie.set('authToken', res.jwtToken);
         } catch (e) {

@@ -41,9 +41,9 @@ import Tooltips from "./components/Tooltips";
 import Toasts from "./components/Toasts";
 import User from './components/users/User';
 import AddUser from './components/users/AddUser';
-<<<<<<< HEAD
+
 import Document from './components/documents/Document';
-=======
+
 import authenticateServices from "../services/authenticate.services";
 import {useDispatch, useSelector} from "react-redux";
 import authenticationActions from "../actions/authentication.actions";
@@ -51,7 +51,9 @@ import ComingDispatchManagement from "./components/ComingDispatch/ComingDispatch
 import OutGoingDispatchManagement from "./components/OutgoingDispatch/OutGoingDispatchManagement";
 import AddComingDispatch from "./components/OutgoingDispatch/AddComingDispatch";
 import ComingDispatchDetail from "./components/ComingDispatch/ComingDispatchDetail";
->>>>>>> 8010d0307b8fdfbd873d6a30f79a30fa8e1c383b
+import SearchDocument from './components/documents/Search';
+import ApproveDocument from './components/documents/ApproveDocument';
+
 
 const RouteWithLoader = ({ component: Component, ...rest }) => {
   const [loaded, setLoaded] = useState(false);
@@ -156,6 +158,8 @@ export default () => (
     <RouteWithSidebar exact path={Routes.AddUser.path} component={AddUser} />
     {/* Document */}
     <RouteWithSidebar exact path={Routes.Document.path} component={Document} />
+    <RouteWithSidebar exact path={Routes.SearchDocument.path} component={SearchDocument} />
+    <RouteWithSidebar exact path={Routes.ApproveDocument.path} component={ApproveDocument} />
 
       {/*  Coming dispatch  */}
     <RouteWithSidebar exact path={Routes.ComingDispatchManagement.path} component={ComingDispatchManagement} />

@@ -53,6 +53,15 @@
 
         console.log(tabs)
 
+        tabs.forEach((tab, index) => {
+            tab.onclick = function() {
+                $('.nav-link .active').classList.remove('.active')
+                $('.tab-pane fade show active') .classList.remove('.active .show')
+                
+
+            }
+        });
+
     </script>
 </body>
 </html>
